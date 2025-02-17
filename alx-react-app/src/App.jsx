@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
+import UserProfile from './components/UserProfile';
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -18,6 +19,10 @@ function App() {
       <div className="App">
         <WelcomeMessage />
       </div>
+      <div>
+      <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
+      <UserProfile name="Bob" age="30" bio="Avid traveler and foodie" />
+    </div>
       <div className="App">
             <WelcomeMessage />
         </div>
