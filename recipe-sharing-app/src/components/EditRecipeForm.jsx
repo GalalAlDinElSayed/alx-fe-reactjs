@@ -1,14 +1,16 @@
-import { useState } from 'react';
-import useRecipeStore from './recipeStore';
+import { useState } from "react";
+import { useRecipeStore } from "./recipeStore";
 
-const EditRecipeForm = ({ recipe }) => {
-  const updateRecipe = useRecipeStore((state) => state.updateRecipe);
+const EditRecipeForm = ({ recipe, onClose }) => {
   const [title, setTitle] = useState(recipe.title);
   const [description, setDescription] = useState(recipe.description);
+  const updateRecipe = useRecipeStore((state) => state.updateRecipe);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault(); // ✅ حل المشكلة
+
     updateRecipe(recipe.id, { title, description });
+    onClose(); // إغلاق النموذج بعد الحفظ
   };
 
   return (
@@ -22,7 +24,7 @@ const EditRecipeForm = ({ recipe }) => {
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
-      <button type="submit">Update Recipe</button>
+      <button type="submit">Save Changes</button>
     </form>
   );
 };
