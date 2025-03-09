@@ -1,24 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // استيراد Link للتنقل بين الصفحات
-import useRecipeStore from './recipeStore';
+import { useRecipeStore } from '../store/recipeStore';
+import { Link } from 'react-router-dom';
 
 const RecipeList = () => {
-  const recipes = useRecipeStore((state) => state.filteredRecipes);
+  const recipes = useRecipeStore(state => state.filteredRecipes.length > 0 ? state.filteredRecipes : state.recipes);
 
   return (
     <div>
-      {recipes.length > 0 ? (
-        recipes.map((recipe) => (
-          <div key={recipe.id}>
-            <h2>
-              <Link to={`/recipe/${recipe.id}`}>{recipe.title}</Link>
-            </h2>
-            <p>{recipe.description}</p>
-          </div>
-        ))
-      ) : (
-        <p>No recipes found.</p>
-      )}
+      {recipes.map(recipe => (
+        <div key={recipe.id}>
+          <h3>{recipe.title}</h3>
+          <p>{recipe.description}</p>
+          <Link to={`/recipe/${recipe.id}`}>View Details</Link>
+        </div>
+      ))}
     </div>
   );
 };
