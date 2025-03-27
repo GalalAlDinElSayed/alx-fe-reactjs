@@ -8,7 +8,11 @@ const RegistrationForm = () => {
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -23,8 +27,9 @@ const RegistrationForm = () => {
         <input
           type="text"
           name="username"
-          value={formData.username}
+          value={formData.username || ""}
           onChange={handleChange}
+          required
         />
       </div>
 
@@ -33,8 +38,9 @@ const RegistrationForm = () => {
         <input
           type="email"
           name="email"
-          value={formData.email}
+          value={formData.email || ""}
           onChange={handleChange}
+          required
         />
       </div>
 
@@ -43,8 +49,9 @@ const RegistrationForm = () => {
         <input
           type="password"
           name="password"
-          value={formData.password}
+          value={formData.password || ""}
           onChange={handleChange}
+          required
         />
       </div>
 
