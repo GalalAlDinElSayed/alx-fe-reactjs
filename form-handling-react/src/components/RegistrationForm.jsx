@@ -7,6 +7,9 @@ const RegistrationForm = () => {
     password: "",
   });
 
+  // تفكيك القيم لضمان وجودها بشكل منفصل
+  const { username, email, password } = formData;
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -27,7 +30,7 @@ const RegistrationForm = () => {
         <input
           type="text"
           name="username"
-          value={formData.username || ""}
+          value={username} // تم التفكيك هنا
           onChange={handleChange}
           required
         />
@@ -38,7 +41,7 @@ const RegistrationForm = () => {
         <input
           type="email"
           name="email"
-          value={formData.email || ""}
+          value={email} // تم التفكيك هنا
           onChange={handleChange}
           required
         />
@@ -49,7 +52,7 @@ const RegistrationForm = () => {
         <input
           type="password"
           name="password"
-          value={formData.password || ""}
+          value={password} // تم التفكيك هنا
           onChange={handleChange}
           required
         />
