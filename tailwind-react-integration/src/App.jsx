@@ -1,10 +1,10 @@
 import React from 'react';
-import UserProfile from './components/UserProfile';  // استيراد مكون UserProfile
+import UserProfile from './components/UserProfile';
 
 function App() {
   return (
     <div className="App">
-      <UserProfile />  {/* استخدام مكون UserProfile هنا */}
+      <UserProfile />
     </div>
   );
 }
